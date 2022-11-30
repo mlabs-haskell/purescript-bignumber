@@ -13,11 +13,6 @@ exports.parseBigNumberImpl = function parseBigNumberImpl (Left,Right,s) {
 };
 
 
-exports.configImpl = function configImpl (cfg) {
-    BigNumber.config(cfg);
-};
-
-
 exports.isBigNumber = function isBigNumber (x) {
     return BigNumber.isBigNumber(x);
 };
@@ -157,8 +152,11 @@ exports.toFormat = function toFormat (x) {
     return x.toFormat();
 };
 
-exports.toFractionImpl = function toFractionImpl (x) {
-    return x.toFraction();
+exports.toFractionImpl = function (tuple) {
+    return function toFractionImpl (x) {
+        var fraction = x.toFraction();
+        return tuple(fraction[0], fraction[1]);
+    };
 };
 
 exports.valueOf = function valueOf (x) {
