@@ -166,3 +166,8 @@ exports.valueOf = function valueOf (x) {
 exports.sqrt = function sqrt (x) {
     return x.sqrt();
 };
+
+exports.fromNumber = function fromNumber(x) {
+    return new BigNumber(x);
+};
+
