@@ -3,11 +3,15 @@ module Data.BigNumber
   , isBigNumber, isInteger, isFinite, isNaN, isNegative, isPositive, isZero
   , toNumber, toString, toExponential, toFixed, toFormat, toFraction, valueOf
   , abs', negate', idiv, sqrt, pow
-  , intValue, precision, decimalPlaces, shiftedBy, randomBigNumber
+  , intValue, precision, decimalPlaces, shiftedBy, randomBigNumber, fromInt
+  , fromUInt, fromNumber
   ) where
 
 import Prelude
 import Data.Int as Int
+import Data.UInt as UInt
+import Data.UInt
+import Data.Number
 import Data.Either (Either (..))
 import Data.Tuple (Tuple (..))
 import Data.Function.Uncurried (Fn3, runFn3, Fn2, runFn2, Fn5, runFn5)
@@ -67,6 +71,14 @@ foreign import idivBigNumberImpl :: Fn2 BigNumber BigNumber BigNumber
 foreign import moduloBigNumberImpl :: Fn2 BigNumber BigNumber BigNumber
 foreign import sqrt :: BigNumber -> BigNumber
 foreign import powBigNumberImpl :: Fn2 BigNumber BigNumber BigNumber
+
+foreign import fromNumber :: Number -> BigNumber
+
+fromInt :: Int -> BigNumber
+fromInt = fromNumber <<< Int.toNumber
+
+fromUInt :: UInt -> BigNumber
+fromUInt = fromNumber <<< UInt.toNumber
 
 abs' :: BigNumber -> BigNumber
 abs' = absImpl
