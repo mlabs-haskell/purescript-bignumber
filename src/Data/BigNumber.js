@@ -153,9 +153,9 @@ exports.toFormat = function toFormat (x) {
 };
 
 exports.toFractionImpl = function (tuple) {
-    return function toFractionImpl (x) {
-        var fraction = x.toFraction();
-        return tuple(fraction[0], fraction[1]);
+    return function toFractionImpl (x, maximum_denominator) {
+        var fraction = x.toFraction(maximum_denominator);
+        return tuple(fraction[0])(fraction[1]);
     };
 };
 
