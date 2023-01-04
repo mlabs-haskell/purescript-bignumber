@@ -47,10 +47,10 @@ foreign import toFixed :: BigNumber -> String
 foreign import toFormat :: BigNumber -> String
 foreign import toFractionImpl
   :: (forall a b. a -> b -> Tuple a b)
-  -> Fn2 BigNumber BigNumber (Tuple String String)
+  -> Fn2 BigNumber BigNumber (Tuple BigNumber BigNumber)
 foreign import valueOf :: BigNumber -> String
 
-toFraction :: BigNumber -> BigNumber -> Tuple String String
+toFraction :: BigNumber -> BigNumber -> Tuple BigNumber BigNumber
 toFraction a b =
   runFn2 (toFractionImpl Tuple) a b
 
