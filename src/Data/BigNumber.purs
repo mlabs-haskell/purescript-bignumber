@@ -10,8 +10,7 @@ module Data.BigNumber
 import Prelude
 import Data.Int as Int
 import Data.UInt as UInt
-import Data.UInt
-import Data.Number
+import Data.UInt (UInt)
 import Data.Either (Either (..))
 import Data.Tuple (Tuple (..))
 import Data.Function.Uncurried (Fn3, runFn3, Fn2, runFn2, Fn5, runFn5)

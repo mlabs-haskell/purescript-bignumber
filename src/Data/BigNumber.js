@@ -1,8 +1,6 @@
-"use strict";
+import BigNumber from 'bignumber.js';
 
-var BigNumber = require('bignumber.js');
-
-exports.parseBigNumberImpl = function parseBigNumberImpl (Left,Right,s) {
+export function parseBigNumberImpl(Left, Right, s) {
     var x;
     try {
         x = new BigNumber(s);
@@ -10,25 +8,21 @@ exports.parseBigNumberImpl = function parseBigNumberImpl (Left,Right,s) {
         return Left(e);
     }
     return Right(x);
-};
+}
 
-
-exports.isBigNumber = function isBigNumber (x) {
+export function isBigNumber(x) {
     return BigNumber.isBigNumber(x);
-};
+}
 
-
-exports.randomBigNumber = function randomBigNumber () {
+export function randomBigNumber() {
     return BigNumber.random();
-};
+}
 
-
-exports.absImpl = function absImpl (x) {
+export function absImpl(x) {
     return x.abs();
-};
+}
 
-
-exports.compareBigNumberImpl = function compareBigNumberImpl (LT,EQ,GT,x,y) {
+export function compareBigNumberImpl(LT, EQ, GT, x, y) {
     var r = x.comparedTo(y);
     if (r === -1) {
         return LT;
@@ -37,137 +31,136 @@ exports.compareBigNumberImpl = function compareBigNumberImpl (LT,EQ,GT,x,y) {
     } else if (r === 1) {
         return GT;
     }
-};
+}
 
-
-exports.decimalPlacesImpl = function decimalPlacesImpl (x,y) {
+export function decimalPlacesImpl(x, y) {
     return x.decimalPlaces(y);
-};
+}
 
-exports.divBigNumberImpl = function divBigNumberImpl (x,y) {
+export function divBigNumberImpl(x, y) {
     return x.div(y);
-};
+}
 
-exports.idivBigNumberImpl = function idivBigNumberImpl (x,y) {
+export function idivBigNumberImpl(x, y) {
     return x.idiv(y);
-};
+}
 
-exports.powBigNumberImpl = function powBigNumberImpl (x,y) {
+export function powBigNumberImpl(x, y) {
     return x.pow(y);
-};
+}
 
-exports.intValue = function intValue (x) {
+export function intValue(x) {
     return x.integerValue();
-};
+}
 
-exports.eqBigNumberImpl = function eqBigNumberImpl (x,y) {
+export function eqBigNumberImpl(x, y) {
     return x.eq(y);
-};
+}
 
-exports.isFinite = function isFinite (x) {
+export function isFinite(x) {
     return x.isFinite();
-};
+}
 
-exports.gtBigNumberImpl = function gtBigNumberImpl (x,y) {
+export function gtBigNumberImpl(x, y) {
     return x.gt(y);
-};
+}
 
-exports.gteBigNumberImpl = function gteBigNumberImpl (x,y) {
+export function gteBigNumberImpl(x, y) {
     return x.gte(y);
-};
+}
 
-exports.isInteger = function isInteger (x) {
+export function isInteger(x) {
     return x.isInteger();
-};
+}
 
-exports.ltBigNumberImpl = function ltBigNumberImpl (x,y) {
+export function ltBigNumberImpl(x, y) {
     return x.lt(y);
-};
+}
 
-exports.lteBigNumberImpl = function lteBigNumberImpl (x,y) {
+export function lteBigNumberImpl(x, y) {
     return x.lte(y);
-};
+}
 
-exports.isNaN = function isNaN (x) {
+export function isNaN(x) {
     return x.isNaN();
-};
+}
 
-exports.isNegative = function isNegative (x) {
+export function isNegative(x) {
     return x.isNegative();
-};
+}
 
-exports.isPositive = function isPositive (x) {
+export function isPositive(x) {
     return x.isPositive();
-};
+}
 
-exports.isZero = function isZero (x) {
+export function isZero(x) {
     return x.isZero();
-};
+}
 
-exports.minusBigNumberImpl = function minusBigNumberImpl (x,y) {
+export function minusBigNumberImpl(x, y) {
     return x.minus(y);
-};
+}
 
-exports.moduloBigNumberImpl = function moduloBigNumberImpl (x,y) {
+export function moduloBigNumberImpl(x, y) {
     return x.modulo(y);
-};
+}
 
-exports.timesBigNumberImpl = function timesBigNumberImpl (x,y) {
+export function timesBigNumberImpl(x, y) {
     return x.times(y);
-};
+}
 
-exports.negateImpl = function negateImpl (x) {
+export function negateImpl(x) {
     return x.negated();
-};
+}
 
-exports.plusBigNumberImpl = function plusBigNumberImpl (x,y) {
+export function plusBigNumberImpl(x, y) {
     return x.plus(y);
-};
+}
 
-exports.precisionImpl = function precisionImpl (x,y) {
+export function precisionImpl(x, y) {
     return x.precision(y);
-};
+}
 
-exports.shiftedByImpl = function shiftedByImpl (x,y) {
+export function shiftedByImpl(x, y) {
     return x.shiftedBy(y);
-};
+}
 
-exports.toNumber = function toNumber (x) {
+export function toNumber(x) {
     return x.toNumber();
-};
+}
 
-exports.toString = function toString (x) {
+export function toString(x) {
     return x.toString();
-};
+}
 
-exports.toExponential = function toExponential (x) {
+export function toExponential(x) {
     return x.toExponential();
-};
+}
 
-exports.toFixed = function toFixed (x) {
+export function toFixed(x) {
     return x.toFixed();
-};
+}
 
-exports.toFormat = function toFormat (x) {
+export function toFormat(x) {
     return x.toFormat();
-};
+}
 
-exports.toFractionImpl = function (tuple) {
+export function toFractionImpl(tuple) {
     return function toFractionImpl (x, maximum_denominator) {
         var fraction = x.toFraction(maximum_denominator);
         return tuple(fraction[0])(fraction[1]);
     };
-};
+}
 
-exports.valueOf = function valueOf (x) {
+export function valueOf(x) {
     return x.valueOf();
-};
+}
 
-exports.sqrt = function sqrt (x) {
+export function sqrt(x) {
     return x.sqrt();
-};
+}
 
-exports.fromNumber = function fromNumber(x) {
+export function fromNumber(x) {
     return new BigNumber(x);
-};
+}
 
